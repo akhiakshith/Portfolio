@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshith Pachipulusu | Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Modern gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Professional animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Modern glass morphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Professional hover effects */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Modern button styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Professional navigation */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Modern project cards */
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        /* Modern skill icons */
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Professional typography */
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Smooth scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 4px;
+        }
+
+        /* Professional section spacing */
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        /* Modern particles container */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Responsive design improvements */
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 80px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <!-- Modern Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass-dark">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold gradient-text">Akshith</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home"
+                            class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#about"
+                            class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#projects"
+                            class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Projects</a>
+                        <a href="#skills"
+                            class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Skills</a>
+                        <a href="#contact"
+                            class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center section-padding">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <div class="animate-fade-in-up">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    <span class="gradient-text">Akshith Pachipulusu</span>
+                </h1>
+                <h2 class="text-xl md:text-2xl text-gray-400 mb-8 font-light">
+                    Software Developer & Creative Problem Solver
+                </h2>
+                <p class="text-lg text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Passionate about creating innovative digital solutions that bridge the gap between
+                    functionality and exceptional user experience. I transform ideas into reality through code.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="#projects"
+                        class="btn-primary px-8 py-4 rounded-full text-white font-semibold inline-flex items-center">
+                        View My Work
+                        <i class="fas fa-arrow-right ml-3"></i>
+                    </a>
+                    <a href="https://akshithresume.tiiny.site" target="_blank"
+                        class="btn-secondary px-8 py-4 rounded-full text-white font-semibold inline-flex items-center">
+                        Download Resume
+                        <i class="fas fa-download ml-3"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="animate-slide-in-left">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8">
+                        About <span class="gradient-text">Me</span>
+                    </h2>
+                    <div class="space-y-6 text-gray-300 text-lg leading-relaxed">
+                        <p>
+                            I'm a dedicated software developer with a passion for creating impactful digital
+                            experiences.
+                            My journey in technology is driven by curiosity and a commitment to continuous learning.
+                        </p>
+                        <p>
+                            I specialize in full-stack development, with expertise in modern frameworks and
+                            technologies.
+                            My approach combines technical proficiency with creative problem-solving to deliver
+                            solutions
+                            that not only work flawlessly but also provide exceptional user experiences.
+                        </p>
+                        <p>
+                            When I'm not coding, I enjoy exploring new technologies, contributing to open-source
+                            projects,
+                            and sharing knowledge with the developer community.
+                        </p>
+                    </div>
+                </div>
+                <div class="animate-fade-in-up">
+                    <div class="glass rounded-2xl p-8 hover-lift">
+                        <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Developer workspace" class="w-full h-80 object-cover rounded-xl mb-6">
+                        <div class="grid grid-cols-2 gap-6 text-center">
+                            <div>
+                                <h3 class="text-2xl font-bold gradient-text">15+</h3>
+                                <p class="text-gray-400">Projects Completed</p>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold gradient-text">3+</h3>
+                                <p class="text-gray-400">Years Learning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Featured <span class="gradient-text">Projects</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    A showcase of my recent work, demonstrating expertise in various technologies and problem-solving
+                    approaches.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card rounded-2xl overflow-hidden hover-lift relative">
+                    <div class="h-64 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=800&q=80"
+                            alt="Gym Application" class="w-full h-full object-cover opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span
+                                class="px-3 py-1 bg-blue-500/20 backdrop-blur-sm rounded-full text-xs text-white border border-blue-500/30">
+                                React.js
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-white">Gym Web Application</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            A comprehensive fitness platform built with React.js featuring real-time workout tracking,
+                            interactive components, and seamless user experience design.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full border border-blue-500/20">React.js</span>
+                            <span
+                                class="px-3 py-1 bg-green-500/10 text-green-400 text-xs rounded-full border border-green-500/20">Real-time</span>
+                            <span
+                                class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full border border-purple-500/20">UI/UX</span>
+                        </div>
+                        <a href="https://github.com/akhiakshith/gym-web-app"
+                            class="inline-flex items-center text-blue-400 hover:text-blue-300 font-semibold transition-colors">
+                            View Project
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card rounded-2xl overflow-hidden hover-lift relative">
+                    <div class="h-64 bg-gradient-to-br from-green-500 to-teal-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+                            alt="AI Enhancement" class="w-full h-full object-cover opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span
+                                class="px-3 py-1 bg-green-500/20 backdrop-blur-sm rounded-full text-xs text-white border border-green-500/30">
+                                AI/ML
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-white">Low-Light Image Enhancer</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Advanced computer vision system using YOLOv8 for vehicle detection and image enhancement
+                            in low-light conditions with 92% accuracy rate.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 bg-yellow-500/10 text-yellow-400 text-xs rounded-full border border-yellow-500/20">Python</span>
+                            <span
+                                class="px-3 py-1 bg-red-500/10 text-red-400 text-xs rounded-full border border-red-500/20">YOLOv8</span>
+                            <span
+                                class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full border border-blue-500/20">OpenCV</span>
+                        </div>
+                        <a href="https://github.com/akhiakshith/low-light-enhancer"
+                            class="inline-flex items-center text-blue-400 hover:text-blue-300 font-semibold transition-colors">
+                            View Project
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card rounded-2xl overflow-hidden hover-lift relative">
+                    <div class="h-64 bg-gradient-to-br from-purple-500 to-pink-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+                            alt="Recipe App" class="w-full h-full object-cover opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span
+                                class="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-white border border-purple-500/30">
+                                Full-Stack
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-white">Dishcovery</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Intelligent recipe recommendation platform leveraging machine learning APIs to suggest
+                            personalized dishes based on available ingredients.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 bg-red-500/10 text-red-400 text-xs rounded-full border border-red-500/20">Flask</span>
+                            <span
+                                class="px-3 py-1 bg-green-500/10 text-green-400 text-xs rounded-full border border-green-500/20">ML
+                                APIs</span>
+                            <span
+                                class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full border border-blue-500/20">Vercel</span>
+                        </div>
+                        <a href="https://github.com/akhiakshith/dishcovery"
+                            class="inline-flex items-center text-blue-400 hover:text-blue-300 font-semibold transition-colors">
+                            View Project
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="https://github.com/akhiakshith"
+                    class="btn-secondary px-8 py-4 rounded-full text-white font-semibold inline-flex items-center">
+                    View All Projects
+                    <i class="fab fa-github ml-3"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Technical <span class="gradient-text">Skills</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    A comprehensive toolkit of modern technologies and frameworks I use to build exceptional digital
+                    experiences.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                <div class="skill-item rounded-2xl p-6 text-center animate-float">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                        <i class="fab fa-python text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">Python</h3>
+                    <p class="text-sm text-gray-400">Backend & AI</p>
+                </div>
+
+                <div class="skill-item rounded-2xl p-6 text-center animate-float" style="animation-delay: 0.1s;">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center">
+                        <i class="fas fa-code text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">C/C++</h3>
+                    <p class="text-sm text-gray-400">System Programming</p>
+                </div>
+
+                <div class="skill-item rounded-2xl p-6 text-center animate-float" style="animation-delay: 0.2s;">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+                        <i class="fab fa-html5 text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">HTML/CSS</h3>
+                    <p class="text-sm text-gray-400">Frontend Design</p>
+                </div>
+
+                <div class="skill-item rounded-2xl p-6 text-center animate-float" style="animation-delay: 0.3s;">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center">
+                        <i class="fab fa-java text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">Java</h3>
+                    <p class="text-sm text-gray-400">Enterprise Apps</p>
+                </div>
+
+                <div class="skill-item rounded-2xl p-6 text-center animate-float" style="animation-delay: 0.4s;">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center">
+                        <i class="fas fa-paint-brush text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">Design</h3>
+                    <p class="text-sm text-gray-400">UI/UX & Graphics</p>
+                </div>
+
+                <div class="skill-item rounded-2xl p-6 text-center animate-float" style="animation-delay: 0.5s;">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center">
+                        <i class="fab fa-git-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">Git</h3>
+                    <p class="text-sm text-gray-400">Version Control</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">
+                Let's <span class="gradient-text">Connect</span>
+            </h2>
+            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+                Ready to collaborate on your next project? Let's discuss how we can bring your ideas to life.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <a href="mailto:akshithakhi25@gmail.com" class="glass rounded-2xl p-8 hover-lift text-center group">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-envelope text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">Email</h3>
+                    <p class="text-sm text-gray-400">akshithakhi25@gmail.com</p>
+                </a>
+
+                <a href="https://www.linkedin.com/in/akshithpachipulusu" target="_blank"
+                    class="glass rounded-2xl p-8 hover-lift text-center group">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fab fa-linkedin-in text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">LinkedIn</h3>
+                    <p class="text-sm text-gray-400">Professional Network</p>
+                </a>
+
+                <a href="https://github.com/akhiakshith" target="_blank"
+                    class="glass rounded-2xl p-8 hover-lift text-center group">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fab fa-github text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">GitHub</h3>
+                    <p class="text-sm text-gray-400">Code Repository</p>
+                </a>
+
+                <a href="tel:+917780697892" class="glass rounded-2xl p-8 hover-lift text-center group">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-phone-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">Phone</h3>
+                    <p class="text-sm text-gray-400">Direct Contact</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center">
+                <div class="mb-8">
+                    <a href="#" class="text-3xl font-bold gradient-text">Akshith Pachipulusu</a>
+                </div>
+                <p class="text-gray-400 mb-8">
+                    Building the future, one line of code at a time.
+                </p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="mailto:akshithakhi25@gmail.com" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/akshithpachipulusu" target="_blank"
+                        class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://github.com/akhiakshith" target="_blank"
+                        class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="tel:+917780697892" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fas fa-phone-alt text-xl"></i>
+                    </a>
+                </div>
+                <div class="border-t border-gray-800 pt-8">
+                    <p class="text-gray-500 text-sm">
+                        © 2024 Akshith Pachipulusu. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize particles.js with professional settings
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 50,
+                    density: { enable: true, value_area: 800 }
+                },
+                color: { value: "#3b82f6" },
+                shape: {
+                    type: "circle",
+                    stroke: { width: 0, color: "#000000" }
+                },
+                opacity: {
+                    value: 0.3,
+                    random: true,
+                    anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: { enable: true, speed: 2, size_min: 0.1, sync: false }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#3b82f6",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 0.5 } },
+                    push: { particles_nb: 4 }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.md\\:hidden button');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                // Mobile menu implementation would go here
+                console.log('Mobile menu toggle');
+            });
+        }
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('backdrop-blur-xl');
+            } else {
+                nav.classList.remove('backdrop-blur-xl');
+            }
+        });
+    </script>
+</body>
+
+</html>
