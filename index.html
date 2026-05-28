@@ -343,63 +343,234 @@ h2{
 .sk-name{font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700}
 
 /* ── CONTACT ── */
-#contact{padding-top:5rem;padding-bottom:5rem;min-height:auto}
-.contact-wrap{max-width:620px;margin:0 auto}
+#contact {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  min-height: auto;
+}
+.contact-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3.5rem;
+  align-items: stretch;
+}
+.contact-left-card {
+  background: linear-gradient(135deg, var(--bg2) 0%, #12080a 100%);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+.contact-left-card::after {
+  content: '';
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(232,32,58,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.contact-left-card .avail-status {
+  margin-bottom: 1.5rem;
+}
+.contact-left-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+.contact-left-card h3 em {
+  color: var(--red);
+  font-style: normal;
+  position: relative;
+  display: inline-block;
+}
+.contact-left-card h3 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(232,32,58,0.25);
+  border-radius: 2px;
+}
+.contact-left-card .contact-desc {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+.contact-status-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  margin-top: auto;
+}
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--bg3);
+  padding: 0.4rem 0.9rem;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+}
+.meta-item span {
+  font-size: 14px;
+}
 
-.avail-card{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:18px;padding:2rem;margin-bottom:1.5rem;
-  position:relative;overflow:hidden;
+.contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
 }
-.avail-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--red) 0%,transparent 70%);
+.contact-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.1rem 1.5rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
-.avail-status{display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem}
-.avail-dot{
-  width:8px;height:8px;border-radius:50%;background:#22c55e;
-  animation:pulseg 2.2s infinite;
+.contact-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--red);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
 }
-@keyframes pulseg{
-  0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.45)}
-  50%{box-shadow:0 0 0 7px rgba(34,197,94,0)}
+.contact-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: rgba(232,32,58,0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 20px rgba(232,32,58,0.03);
 }
-.avail-label{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#22c55e;letter-spacing:.05em}
-.avail-headline{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:.5rem;line-height:1.2}
-.avail-desc{font-size:13.5px;color:var(--muted);line-height:1.75}
-
-.contact-links{display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem}
-.contact-link{
-  display:flex;align-items:center;gap:1rem;
-  padding:.95rem 1.25rem;border:1px solid var(--border);
-  border-radius:14px;text-decoration:none;color:var(--text);
-  transition:all .25s;background:var(--bg2);
+.contact-card:hover::before {
+  transform: scaleY(1);
 }
-.contact-link:hover{border-color:rgba(232,32,58,.35);background:rgba(232,32,58,.04);transform:translateX(4px)}
-.cl-icon{
-  width:40px;height:40px;background:var(--bg3);border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;color:var(--red);transition:background .25s;
+.contact-card-info {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
-.contact-link:hover .cl-icon{background:rgba(232,32,58,.12)}
-.cl-label{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-family:'Syne',sans-serif;font-weight:700}
-.cl-val{font-size:13.5px;margin-top:.1rem}
-
-.contact-right{position:sticky;top:5rem}
-.contact-big{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(2rem,3.5vw,3rem);
-  font-weight:800;line-height:1.1;
-  letter-spacing:-0.02em;margin-bottom:1.5rem;
+.cc-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--bg3);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--red);
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border);
 }
-.contact-big em{color:var(--red);font-style:normal}
-.contact-desc{font-size:14.5px;color:var(--muted);line-height:1.9;margin-bottom:1.75rem}
-.fun-chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:2rem}
-.fun-chip{
-  display:flex;align-items:center;gap:.4rem;
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:50px;padding:.35rem .9rem;
-  font-size:12px;color:var(--muted);
+.contact-card:hover .cc-icon {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(232,32,58,0.4);
+  border-color: var(--red);
+}
+.cc-details {
+  display: flex;
+  flex-direction: column;
+}
+.cc-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.15rem;
+}
+.cc-val {
+  font-size: 14px;
+  font-weight: 500;
+}
+.contact-card-action {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cc-arrow {
+  color: var(--muted);
+  transition: all 0.3s ease;
+}
+.contact-card:hover .cc-arrow {
+  color: var(--red);
+  transform: translateX(4px);
+}
+.cc-copy-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  position: relative;
+  z-index: 5;
+}
+.cc-copy-btn:hover {
+  background: var(--bg3);
+  color: var(--text);
+}
+/* Tooltip */
+.tooltip-success {
+  position: absolute;
+  background: #22c55e;
+  color: white;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  border-radius: 4px;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+}
+.tooltip-success.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-3px);
 }
 
 /* ── FOOTER ── */
@@ -431,7 +602,8 @@ footer strong{color:var(--text)}
   .about-grid{grid-template-columns:1fr}
   .exp-layout{grid-template-columns:1fr}
   .proj-grid{grid-template-columns:1fr}
-  .contact-wrap{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr;gap:2rem}
+  .contact-left-card{padding:2rem}
   footer{padding:1.5rem 1.25rem}
 }
 
@@ -906,37 +1078,84 @@ footer strong{color:var(--text)}
 
 <!-- CONTACT -->
 <section id="contact">
+  <span class="section-label reveal">Get In Touch</span>
   <div class="contact-wrap">
-    <div>
-      <span class="section-label reveal">Get In Touch</span>
-      <div class="avail-card reveal d1">
-        <div class="avail-status">
-          <div class="avail-dot"></div>
-          <span class="avail-label">Open to Opportunities</span>
-        </div>
-        <div class="avail-headline">Graduate student from VIT</div>
-        <div class="avail-desc">Graduating 2026 from VIT. Looking for internships, analyst roles, or collaborative projects where I can apply data, strategy, and code to solve real problems.</div>
+    
+    <div class="contact-left-card reveal d1">
+      <div class="avail-status">
+        <div class="avail-dot"></div>
+        <span class="avail-label">Open to Opportunities</span>
       </div>
-      <div class="contact-links">
-        <a href="mailto:akshithakhi25@gmail.com" class="contact-link reveal d1">
-          <div class="cl-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div><div class="cl-label">Email</div><div class="cl-val">akshithakhi25@gmail.com</div></div>
-        </a>
-        <a href="https://www.linkedin.com/in/akshithpachipulusu" target="_blank" class="contact-link reveal d2">
-          <div class="cl-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
-          <div><div class="cl-label">LinkedIn</div><div class="cl-val">akshithpachipulusu</div></div>
-        </a>
-        <a href="https://github.com/akhiakshith" target="_blank" class="contact-link reveal d3">
-          <div class="cl-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg></div>
-          <div><div class="cl-label">GitHub</div><div class="cl-val">akhiakshith</div></div>
-        </a>
-        <a href="tel:+917780697892" class="contact-link reveal d4">
-          <div class="cl-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
-          <div><div class="cl-label">Phone</div><div class="cl-val">+91 778 069 7892</div></div>
-        </a>
+      <h3>Let's build something <em>extraordinary</em> together.</h3>
+      <p class="contact-desc">Graduate student from VIT (Class of 2026). Looking for internships, analyst roles, or collaborative projects where I can apply data, strategy, and code to solve real-world problems.</p>
+      
+      <div class="contact-status-meta">
+        <div class="meta-item"><span>📍</span> Vellore, India</div>
+        <div class="meta-item"><span>⚡</span> Fast Responder</div>
       </div>
     </div>
 
+    <div class="contact-grid">
+      <a href="mailto:akshithakhi25@gmail.com" class="contact-card reveal d1">
+        <div class="contact-card-info">
+          <div class="cc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="cc-details">
+            <span class="cc-label">Email</span>
+            <span class="cc-val">akshithakhi25@gmail.com</span>
+          </div>
+        </div>
+        <div class="contact-card-action">
+          <button class="cc-copy-btn" data-copy="akshithakhi25@gmail.com" title="Copy to clipboard">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="tooltip-success">Copied!</span>
+          </button>
+          <span class="cc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/akshithpachipulusu" target="_blank" class="contact-card reveal d2">
+        <div class="contact-card-info">
+          <div class="cc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+          <div class="cc-details">
+            <span class="cc-label">LinkedIn</span>
+            <span class="cc-val">akshithpachipulusu</span>
+          </div>
+        </div>
+        <div class="contact-card-action">
+          <span class="cc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://github.com/akhiakshith" target="_blank" class="contact-card reveal d3">
+        <div class="contact-card-info">
+          <div class="cc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg></div>
+          <div class="cc-details">
+            <span class="cc-label">GitHub</span>
+            <span class="cc-val">akhiakshith</span>
+          </div>
+        </div>
+        <div class="contact-card-action">
+          <span class="cc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="tel:+917780697892" class="contact-card reveal d4">
+        <div class="contact-card-info">
+          <div class="cc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="cc-details">
+            <span class="cc-label">Phone</span>
+            <span class="cc-val">+91 778 069 7892</span>
+          </div>
+        </div>
+        <div class="contact-card-action">
+          <button class="cc-copy-btn" data-copy="+91 778 069 7892" title="Copy to clipboard">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="tooltip-success">Copied!</span>
+          </button>
+          <span class="cc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+    </div>
 
   </div>
 </section>
@@ -1115,6 +1334,25 @@ window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && certModal.classList.contains('active')) {
     closeCertModal();
   }
+});
+
+/* ── CLIPBOARD COPY LOGIC ── */
+const copyBtns = document.querySelectorAll('.cc-copy-btn');
+copyBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); // prevent anchor click
+    e.stopPropagation(); // prevent card click
+    const text = btn.getAttribute('data-copy');
+    navigator.clipboard.writeText(text).then(() => {
+      const tooltip = btn.querySelector('.tooltip-success');
+      if (tooltip) {
+        tooltip.classList.add('show');
+        setTimeout(() => {
+          tooltip.classList.remove('show');
+        }, 1800);
+      }
+    });
+  });
 });
 </script>
 </body>
