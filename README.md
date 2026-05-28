@@ -20,7 +20,7 @@ Welcome to my master portfolio. This is an ultra-minimalist, high-end Gen Z dark
 ## 📂 Featured Showcase
 
 Inside this portfolio, the following projects are prominently featured:
-1. **Sales & Customer Insights Dashboard:** End-to-end e-commerce analysis, RFM segmentation, and Power BI visualization tracking revenue and retention KPI trends.
+1. **ApexStrategy:** Interactive F1 telemetry dashboard and pit stop window optimizer modeling compound-specific tire degradation curves and simulating undercut windows.
 2. **Dishcovery:** A Flask-based recipes recommender deploying custom content filtering, Pandas matrices, and fully overhauled glassmorphism styles.
 3. **Automated Low-Light Image Enhancer:** A computer vision pipeline utilizing CLAHE, gamma corrections, and YOLOv8 vehicle detection.
 4. **Gym Web Application (Fitness Hub):** A modern tracking dashboard complete with glass controls, drag-and-drop elements, and inline SVG assets.
