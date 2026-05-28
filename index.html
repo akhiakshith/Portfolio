@@ -434,6 +434,153 @@ footer strong{color:var(--text)}
   .contact-wrap{grid-template-columns:1fr}
   footer{padding:1.5rem 1.25rem}
 }
+
+/* ── CERTIFICATE MODAL ── */
+.cert-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(8, 8, 8, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: 1.5rem;
+}
+.cert-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.cert-modal-content {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8), 0 0 40px rgba(232, 32, 58, 0.05);
+  transform: scale(0.92);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.cert-modal.active .cert-modal-content {
+  transform: scale(1);
+}
+.cert-modal-header {
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(16, 16, 16, 0.95);
+  backdrop-filter: blur(10px);
+}
+.cert-modal-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+.cert-modal-close {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.cert-modal-close:hover {
+  background: var(--border);
+  color: var(--red);
+  transform: rotate(90deg);
+}
+.cert-modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0d0d0d;
+  min-height: 250px;
+}
+.cert-modal-img {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  border: 1px solid var(--border);
+  background: #111;
+  transition: transform 0.3s ease;
+}
+.cert-modal-img:hover {
+  transform: scale(1.015);
+}
+.cert-modal-footer {
+  padding: 1rem 1.75rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(16, 16, 16, 0.95);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.cert-modal-by {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.cert-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+.cert-modal-btn {
+  padding: 0.5rem 1.2rem;
+  font-size: 11.5px;
+  border-radius: 50px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cert-modal-btn.btn-primary {
+  background: var(--red);
+  color: #fff;
+  border: 2px solid var(--red);
+}
+.cert-modal-btn.btn-primary:hover {
+  background: transparent;
+  color: var(--red);
+}
+.cert-modal-btn.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--border);
+}
+.cert-modal-btn.btn-outline:hover {
+  border-color: #3a3a3a;
+  background: var(--bg3);
+}
 </style>
 </head>
 <body>
@@ -602,7 +749,7 @@ footer strong{color:var(--text)}
       </div>
       <span class="section-label reveal" style="margin-top:1.5rem">Certifications</span>
       <div class="cert-stack">
-        <a href="Oracke AI Certificate.pdf" target="_blank" style="text-decoration:none; color:inherit; display:block">
+        <a href="Oracke AI Certificate.png" class="cert-link" data-pdf="Oracke AI Certificate.pdf" data-name="Oracle Cloud Infrastructure 2025 Gen AI Certified" data-by="Oracle University · Jul 2025" target="_blank" style="text-decoration:none; color:inherit; display:block">
           <div class="cert-item reveal d1">
             <div class="cert-ico">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
@@ -613,7 +760,7 @@ footer strong{color:var(--text)}
             </div>
           </div>
         </a>
-        <a href="Intellipact certificate.pdf" target="_blank" style="text-decoration:none; color:inherit; display:block">
+        <a href="Intellipact certificate.png" class="cert-link" data-pdf="Intellipact certificate.pdf" data-name="NumPy and SciPy for Data Science" data-by="Intellipaat Academy · May 2026" target="_blank" style="text-decoration:none; color:inherit; display:block">
           <div class="cert-item reveal d2">
             <div class="cert-ico">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
@@ -796,6 +943,29 @@ footer strong{color:var(--text)}
 
 </main>
 
+<!-- Certificate Lightbox Modal -->
+<div class="cert-modal" id="certModal">
+  <div class="cert-modal-content">
+    <div class="cert-modal-header">
+      <div class="cert-modal-title" id="certModalTitle">Certificate Name</div>
+      <button class="cert-modal-close" id="certModalClose" aria-label="Close modal">&times;</button>
+    </div>
+    <div class="cert-modal-body">
+      <img src="" alt="Certificate Preview" class="cert-modal-img" id="certModalImg">
+    </div>
+    <div class="cert-modal-footer">
+      <div class="cert-modal-by" id="certModalBy">Issuer · Date</div>
+      <div class="cert-modal-actions">
+        <a href="" target="_blank" class="cert-modal-btn btn-outline" id="certModalPdfLink">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:2px; display:inline-block; vertical-align:middle"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Verify PDF
+        </a>
+        <button class="cert-modal-btn btn-primary" id="certModalCloseBtn">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <span>© 2025 <strong>Akshith Pachipulusu</strong>. All rights reserved.</span>
   <span>VIT · Class of 2026</span>
@@ -894,6 +1064,58 @@ const no = new IntersectionObserver(entries=>{
   });
 },{threshold:.3});
 sects.forEach(s=>no.observe(s));
+
+/* ── CERTIFICATE MODAL LOGIC ── */
+const certLinks = document.querySelectorAll('.cert-link');
+const certModal = document.getElementById('certModal');
+const certModalTitle = document.getElementById('certModalTitle');
+const certModalImg = document.getElementById('certModalImg');
+const certModalBy = document.getElementById('certModalBy');
+const certModalPdfLink = document.getElementById('certModalPdfLink');
+const certModalClose = document.getElementById('certModalClose');
+const certModalCloseBtn = document.getElementById('certModalCloseBtn');
+
+function openCertModal(e) {
+  e.preventDefault();
+  const link = e.currentTarget;
+  const imgUrl = link.getAttribute('href');
+  const pdfUrl = link.getAttribute('data-pdf');
+  const name = link.getAttribute('data-name');
+  const by = link.getAttribute('data-by');
+
+  certModalTitle.textContent = name;
+  certModalImg.src = imgUrl;
+  certModalImg.alt = name + " Preview";
+  certModalBy.textContent = by;
+  certModalPdfLink.href = pdfUrl;
+
+  certModal.classList.add('active');
+  document.body.style.overflow = 'hidden'; // prevent page scroll
+}
+
+function closeCertModal() {
+  certModal.classList.remove('active');
+  document.body.style.overflow = ''; // restore page scroll
+}
+
+certLinks.forEach(link => link.addEventListener('click', openCertModal));
+
+[certModalClose, certModalCloseBtn, certModal].forEach(el => {
+  if (el) {
+    el.addEventListener('click', (e) => {
+      if (e.target === el || e.target === certModalClose || e.target === certModalCloseBtn) {
+        closeCertModal();
+      }
+    });
+  }
+});
+
+// Close modal with Escape key
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && certModal.classList.contains('active')) {
+    closeCertModal();
+  }
+});
 </script>
 </body>
 </html>
