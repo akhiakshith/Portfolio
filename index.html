@@ -704,6 +704,15 @@ footer strong{color:var(--text)}
 .cert-modal-img:hover {
   transform: scale(1.015);
 }
+.cert-modal-iframe {
+  width: 100%;
+  height: 65vh;
+  min-height: 500px;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  border: 1px solid var(--border);
+  background: #111;
+}
 .cert-modal-footer {
   padding: 1rem 1.75rem;
   border-top: 1px solid var(--border);
@@ -811,7 +820,7 @@ footer strong{color:var(--text)}
     <p class="home-sub reveal d2">VIT Bioinformatics student. Oracle Gen AI Certified. I bridge data, strategy, and code to build things that actually matter.</p>
     <div class="home-btns reveal d3">
       <a href="#projects" class="btn btn-primary">View My Work →</a>
-      <a href="https://akshithresume.tiiny.site" target="_blank" class="btn btn-outline">Download CV ↓</a>
+      <a href="Akshith_Pachipulusu_Resume.pdf" class="btn btn-outline cert-link" data-pdf="Akshith_Pachipulusu_Resume.pdf" data-name="Akshith Pachipulusu - Resume" data-by="B.Tech Computer Science (Bioinformatics) · VIT" data-pdf-only="true" target="_blank">Download CV ↓</a>
     </div>
     <div class="home-stats reveal d4">
       <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Projects</span></div>
@@ -1164,6 +1173,7 @@ footer strong{color:var(--text)}
     </div>
     <div class="cert-modal-body">
       <img src="" alt="Certificate Preview" class="cert-modal-img" id="certModalImg">
+      <iframe src="" class="cert-modal-iframe" id="certModalIframe" style="display:none;"></iframe>
     </div>
     <div class="cert-modal-footer">
       <div class="cert-modal-by" id="certModalBy">Issuer · Date</div>
@@ -1282,6 +1292,7 @@ const certLinks = document.querySelectorAll('.cert-link');
 const certModal = document.getElementById('certModal');
 const certModalTitle = document.getElementById('certModalTitle');
 const certModalImg = document.getElementById('certModalImg');
+const certModalIframe = document.getElementById('certModalIframe');
 const certModalBy = document.getElementById('certModalBy');
 const certModalPdfLink = document.getElementById('certModalPdfLink');
 const certModalClose = document.getElementById('certModalClose');
@@ -1294,12 +1305,29 @@ function openCertModal(e) {
   const pdfUrl = link.getAttribute('data-pdf');
   const name = link.getAttribute('data-name');
   const by = link.getAttribute('data-by');
+  const isPdfOnly = link.getAttribute('data-pdf-only') === 'true';
 
   certModalTitle.textContent = name;
-  certModalImg.src = imgUrl;
-  certModalImg.alt = name + " Preview";
   certModalBy.textContent = by;
   certModalPdfLink.href = pdfUrl;
+  
+  const certModalPdfLinkSpan = certModalPdfLink.querySelector('span');
+  if (certModalPdfLinkSpan) {
+    certModalPdfLinkSpan.textContent = isPdfOnly ? 'Open/Download PDF' : 'View PDF';
+  }
+
+  if (isPdfOnly) {
+    certModalImg.style.display = 'none';
+    certModalImg.src = '';
+    certModalIframe.style.display = 'block';
+    certModalIframe.src = pdfUrl;
+  } else {
+    certModalIframe.style.display = 'none';
+    certModalIframe.src = '';
+    certModalImg.style.display = 'block';
+    certModalImg.src = imgUrl;
+    certModalImg.alt = name + " Preview";
+  }
 
   certModal.classList.add('active');
   document.body.style.overflow = 'hidden'; // prevent page scroll
@@ -1308,6 +1336,7 @@ function openCertModal(e) {
 function closeCertModal() {
   certModal.classList.remove('active');
   document.body.style.overflow = ''; // restore page scroll
+  certModalIframe.src = ''; // stop any loading
 }
 
 certLinks.forEach(link => link.addEventListener('click', openCertModal));
